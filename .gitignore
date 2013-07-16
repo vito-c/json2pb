@@ -1,0 +1,7 @@
+json2pb.o
+libjson2pb.so
+test.pb.cc
+test.pb.h
+test.pb.o
+test_json
+test_json.o
