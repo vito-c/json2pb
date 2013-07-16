@@ -5,9 +5,11 @@ UNAME := $(shell uname)
 all: libjson2pb.so test_json
 
 clean:
-	-rm -f *.o *.so *.a libjson2pb.so.* test
+	-rm -f *.o *.so *.a libjson2pb.so.* test test.pb.cc test.pb.h test_json
 
-test_json: test_json.o test.pb.o libjson2pb.so
+test_json:  test_json.o test.pb.o libjson2pb.so
+	cc -Wl,-rpath -Wl,.  test_json.o test.pb.o libjson2pb.so -o test_json -lprotobuf -lstdc++ -ljansson
+
 test_json.o: test.pb.h
 
 json2pb.o: bin2ascii.h
