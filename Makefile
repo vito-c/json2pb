@@ -8,7 +8,7 @@ clean:
 	-rm -f *.o *.so *.a libjson2pb.so.* test test.pb.cc test.pb.h test_json
 
 test_json:  test_json.o test.pb.o libjson2pb.so
-	cc -Wl,-rpath -Wl,.  test_json.o test.pb.o libjson2pb.so -o test_json -lprotobuf -lstdc++ -ljansson
+	$(CC) $(LDFLAGS) $^ -o $@ -lprotobuf -lstdc++ -ljansson
 
 test_json.o: test.pb.h
 
